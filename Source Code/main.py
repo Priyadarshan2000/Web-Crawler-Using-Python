@@ -73,6 +73,8 @@ URL.pack(
     pady = 2,
     )
 
+get_URL = tk.StringVar()
+
 URL_entry = tk.Entry(
                 f_body_1,
                 textvariable = URL,
@@ -90,7 +92,6 @@ URL_entry.pack(
                 pady = 6,
                 )
 
-get_URL = tk.StringVar()
 
 f_body_1.pack(
             fill = 'x',
