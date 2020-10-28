@@ -1,12 +1,16 @@
 import tkinter as tk
 import Scrap
-# import tkFont
 
-# A button that will close the window. 
-# Will implement this function later in a button
+# Exit function
 
 def close_root():
-    root.destroy()    
+    root.destroy() 
+
+#Reset Function    
+
+def reset():
+    URL_entry.delete(0, 'end')
+    text_widget.delete(1.0, tk.END)       
 
 root = tk.Tk()
 
@@ -142,19 +146,70 @@ button_2.grid(
             pady = 2,
             )
 
+button_reset = tk.Button(
+                f_tail,
+                text = "Reset All",
+                command = reset,
+                bg = 'dark red',
+                fg = 'white',
+                relief = 'raised',
+                width = 13,
+                font = "Helvitica 9 bold",
+                )
+
+button_reset.place(
+            relx = 0.5,
+            rely = 0.5,
+            anchor = 'center',
+)
+
 f_tail.grid(
             row = 2,
             column = 0,
             )
 
+f_text = tk.Frame(
+                root,
+                borderwidth = 4,
+                pady = 32,
+                )
+
+f_text.grid(
+            row = 3,
+            column = 0,
+)   
+
+my_scroll = tk.Scrollbar(
+                f_text,
+                orient = tk.VERTICAL
+                )
+
+text_widget = tk.Text(
+                f_text,
+                height = 20,
+                width = 80,
+                # state = 'disabled',
+                yscrollcommand = my_scroll.set,
+                bg = "light yellow",
+                bd = 3,
+)
+
+my_scroll.config(
+            command = text_widget.yview
+)
+
+my_scroll.pack(side = tk.RIGHT, fill = tk.Y)
+
+text_widget.pack()
+
 f_copyright = tk.Frame(
                     root,
-                    borderwidth = 8,
-                    pady = 32,
+                    borderwidth = 4,
+                    pady = 22,
                     )
 
 f_copyright.grid(
-                row = 3,
+                row = 4,
                 column = 0,
                 )
 
